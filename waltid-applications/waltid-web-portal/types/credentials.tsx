@@ -77,16 +77,16 @@ export const DIDMethodsConfig = {
     }
   },
   'did:web': {
-    'issuerDid': 'did:web:devlab.biz.id:wallet-api:registry:issuer',
+    'issuerDid': 'did:web:kodratit.github.io:did',
     'issuerKey': {
       "type": "jwk",
       "jwk": {
         "kty": "EC",
-        "d": "RO-ysznhpVLD4QwrwvBpiZvHxqztfpwEtWUug3bItXU",
+        "d": "CUDQ5TbJWCFNbJLoY3yVGScfPyoN0Ds7kMlXiOTJgk4",
         "crv": "P-256",
-        "kid": "OnkCUz1PQx97UcIwH-DxdsxGc1xJYb_ZpgQxFHbl0Fk",
-        "x": "TovuTm-Uaf9tgQQUWYk9qHgVdkz--19JE25TTJQYeTM",
-        "y": "DU8y2ZKP6ginJ-TbrkcVuyjS-YeXChRFQjyF4gq9m4E"
+        "kid": "VwSBp0pgmUVXG_MZ81z_a1q_7lmcb9rlTd5ubO87x44",
+        "x": "5hEBkxu54ORAkdeJYmSINCVf36XayW5A0dBn70BUebc",
+        "y": "Wfs9-MnKqDnc9FfvjgyHaeYuCNR7DIYMmdVwKTWrlbw"
       }
     }
   },

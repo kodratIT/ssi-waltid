@@ -1,0 +1,26 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:web:kodratit.github.io:did",
+  "verificationMethod": [
+    {
+      "id": "did:web:kodratit.github.io:did#key-1",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:kodratit.github.io:did",
+      "publicKeyJwk": {
+        "kty": "EC",
+        "crv": "P-256",
+        "kid": "VwSBp0pgmUVXG_MZ81z_a1q_7lmcb9rlTd5ubO87x44",
+        "x": "5hEBkxu54ORAkdeJYmSINCVf36XayW5A0dBn70BUebc",
+        "y": "Wfs9-MnKqDnc9FfvjgyHaeYuCNR7DIYMmdVwKTWrlbw"
+      }
+    }
+  ],
+  "authentication": [
+    "did:web:kodratit.github.io:did#key-1"
+  ],
+  "assertionMethod": [
+    "did:web:kodratit.github.io:did#key-1"
+  ]
+}

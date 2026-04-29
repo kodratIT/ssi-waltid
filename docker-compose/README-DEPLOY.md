@@ -1,15 +1,32 @@
 # Deployment Guide - devlab.biz.id SSI Stack
 
-## Setup Awal (Sekali saja)
+## Setup Manual DID:web via GitHub Pages
 
-### 1. Clone dan Deploy
+### 1. Setup GitHub Pages untuk DID Document
+
+Lihat panduan lengkap di: `did-documents/README.md`
+
+Ringkasan:
+1. Buat repo `did-documents`
+2. Struktur: `.well-known/did.json`
+3. Copy `did-documents/issuer-did.json` ke repo
+4. Enable GitHub Pages
+5. Set custom domain: `devlab.biz.id`
+6. DNS: CNAME `@` → `kodratit.github.io`
+
+### 2. Update DID di Config
+
+Setelah GitHub Pages aktif, update:
+- `waltid-applications/waltid-web-portal/types/credentials.tsx` → ganti DID ke `did:web:devlab.biz.id`
+
+### 3. Clone dan Deploy
 ```bash
 git clone https://github.com/kodratIT/ssi-waltid.git
 cd ssi-waltid/docker-compose
 docker compose --profile identity up -d
 ```
 
-### 2. Setup Nginx Proxy Manager
+### 4. Setup Nginx Proxy Manager
 Tambahkan proxy hosts berikut:
 
 | Domain | Forward to | Port |
@@ -23,18 +40,6 @@ Tambahkan proxy hosts berikut:
 | vc.devlab.biz.id | docker-compose-caddy-1 | 7103 |
 
 Enable SSL untuk semua.
-
-### 3. Onboard Issuer (Sekali saja)
-```bash
-curl -X POST https://issue.devlab.biz.id/onboard/issuer \
-  -H "Content-Type: application/json" \
-  -d '{
-    "key": {"backend": "jwk", "keyType": "secp256r1"},
-    "did": {"method": "web", "config": {"domain": "devlab.biz.id", "path": "/wallet-api/registry/issuer"}}
-  }'
-```
-
-Simpan response ke `config/issuer-hardcoded.json`.
 
 ## Rebuild Portal (Kalau ada perubahan DID)
 
@@ -64,7 +69,15 @@ docker compose --profile identity up -d
 | Wallet UI | https://wallet.devlab.biz.id |
 | Portal | https://portal.devlab.biz.id |
 
-## Hardcoded Files
+## DID Resolution
 
-- `docker-compose/config/issuer-hardcoded.json` - Issuer DID & Key
+| DID | Resolve URL |
+|-----|-------------|
+| `did:web:devlab.biz.id` (issuer) | `https://devlab.biz.id/.well-known/did.json` |
+| `did:web:devlab.biz.id:wallet-api:registry:<uuid>` (user) | `https://devlab.biz.id/wallet-api/registry/<uuid>/did.json` |
+
+## Files
+
+- `did-documents/issuer-did.json` - DID document public (host di GitHub Pages)
+- `did-documents/issuer-private-key.json` - Private key (JANGAN commit ke GitHub!)
 - `waltid-applications/waltid-web-portal/types/credentials.tsx` - Portal DID config
