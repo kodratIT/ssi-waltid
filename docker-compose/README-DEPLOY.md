@@ -41,6 +41,13 @@ Tambahkan proxy hosts berikut:
 
 Enable SSL untuk semua.
 
+Catatan penting untuk `devlab.biz.id`:
+- root domain tetap diarahkan ke **Caddy port 7001**
+- Caddy akan membagi path:
+  - `/.well-known/did.json` → file statis DID
+  - `/wallet-api/*` → wallet-api
+- jangan arahkan `devlab.biz.id` langsung ke wallet-api tanpa Caddy, karena `/.well-known/did.json` akan 404
+
 ## Rebuild Portal (Kalau ada perubahan DID)
 
 ```bash

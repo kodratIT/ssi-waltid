@@ -3,15 +3,29 @@
 	admin off
 }
 
-# DID Document serving - resolve did:web:devlab.biz.id
+# DID document + wallet registry on the root domain behind Nginx Proxy Manager.
+# Forward devlab.biz.id to Caddy on WALLET_BACKEND_PORT so both of these work:
+# - /.well-known/did.json
+# - /wallet-api/registry/<id>/did.json
+:{$WALLET_BACKEND_PORT} {
+    handle /.well-known/* {
+        root * /var/www/did
+        file_server
+    }
+
+    handle {
+        reverse_proxy http://wallet-api:{$WALLET_BACKEND_PORT} {
+            header_up Host {host}
+            header_up X-Forwarded-Host {host}
+            header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
+        }
+    }
+}
+
+# Optional direct static DID serving on port 80 for setups that expose it.
 :80 {
 	root * /var/www/did
 	file_server
-}
-
-# Wallet API
-:{$WALLET_BACKEND_PORT} {
-    reverse_proxy http://wallet-api:{$WALLET_BACKEND_PORT}
 }
 
 # Issuer API
