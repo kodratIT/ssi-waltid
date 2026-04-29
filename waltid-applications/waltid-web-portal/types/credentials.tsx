@@ -77,16 +77,16 @@ export const DIDMethodsConfig = {
     }
   },
   'did:web': {
-    'issuerDid': 'did:web:wallet.demo.walt.id:wallet-api:registry:portal',
+    'issuerDid': 'did:web:devlab.biz.id:wallet-api:registry:issuer',
     'issuerKey': {
       "type": "jwk",
       "jwk": {
         "kty": "EC",
-        "d": "6rVNEWMQzVdPgin7ER_ptWlSnkozGwOWYlSDcQHMRZw",
-        "crv": "secp256k1",
-        "kid": "hxKurYDplZbY3PgDdXNtz1CwaG6CJ9dyslsyJY11rQs",
-        "x": "fTlAxVt3AHGX4LfqStS8MRIWjBrNYbcdHwW95FKZTiU",
-        "y": "SqeitQcdT7lZg4z2JgCCD8JabsZvE_6W8dbMlVNxXeo"
+        "d": "RO-ysznhpVLD4QwrwvBpiZvHxqztfpwEtWUug3bItXU",
+        "crv": "P-256",
+        "kid": "OnkCUz1PQx97UcIwH-DxdsxGc1xJYb_ZpgQxFHbl0Fk",
+        "x": "TovuTm-Uaf9tgQQUWYk9qHgVdkz--19JE25TTJQYeTM",
+        "y": "DU8y2ZKP6ginJ-TbrkcVuyjS-YeXChRFQjyF4gq9m4E"
       }
     }
   },

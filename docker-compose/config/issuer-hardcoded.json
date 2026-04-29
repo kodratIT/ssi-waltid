@@ -1,0 +1,14 @@
+{
+  "issuerDid": "did:web:devlab.biz.id:wallet-api:registry:issuer",
+  "issuerKey": {
+    "type": "jwk",
+    "jwk": {
+      "kty": "EC",
+      "d": "RO-ysznhpVLD4QwrwvBpiZvHxqztfpwEtWUug3bItXU",
+      "crv": "P-256",
+      "kid": "OnkCUz1PQx97UcIwH-DxdsxGc1xJYb_ZpgQxFHbl0Fk",
+      "x": "TovuTm-Uaf9tgQQUWYk9qHgVdkz--19JE25TTJQYeTM",
+      "y": "DU8y2ZKP6ginJ-TbrkcVuyjS-YeXChRFQjyF4gq9m4E"
+    }
+  }
+}
