@@ -169,7 +169,7 @@ services:
     volumes:
       - wallet-api-db:/waltid-wallet-api/data
     ports:
-      - $POSTGRES_DB_PORT:5432 #TODO: tcp/udp proxy with caddy
+      - 5433:5432 # External port 5433 to avoid conflict with host postgres
 
   vault:
     image: hashicorp/vault:${VERSION_VAULT:-latest}
@@ -230,55 +230,15 @@ services:
     cap_add:
       - NET_ADMIN
     ports:
-
-      - target: "$WALLET_BACKEND_PORT"
-        published: $WALLET_BACKEND_PORT # wallet-api
-        protocol: tcp
-        mode: host
-
-      - target: "$ISSUER_API_PORT"
-        published: $ISSUER_API_PORT # issuer-api
-        protocol: tcp
-        mode: host
-
-      - target: "$VERIFIER_API_PORT"
-        published: $VERIFIER_API_PORT # verifier-api
-        protocol: tcp
-        mode: host
-
-      - target: "$VERIFIER_API2_PORT"
-        published: $VERIFIER_API2_PORT # verifier-api2
-        protocol: tcp
-        mode: host
-
-      - target: "$DEMO_WALLET_FRONTEND_PORT"
-        published: $DEMO_WALLET_FRONTEND_PORT # waltid-demo-wallet
-        protocol: tcp
-        mode: host
-
-      - target: "$DEV_WALLET_FRONTEND_PORT"
-        published: $DEV_WALLET_FRONTEND_PORT # waltid-dev-wallet
-        protocol: tcp
-        mode: host
-
-      - target: "$WEB_PORTAL_PORT"
-        published: $WEB_PORTAL_PORT # web-portal
-        protocol: tcp
-        mode: host
-
-      - target: "$VC_REPO_PORT"
-        published: $VC_REPO_PORT # vc-repo
-        protocol: tcp
-        mode: host
-
-      - target: "$PG_ADMIN_PORT"
-        published: $PG_ADMIN_PORT # pg-admin
-        protocol: tcp
-        mode: host
-
+      - "80:80"     # HTTP (for ACME challenge)
+      - "443:443"   # HTTPS
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
 volumes:
   wallet-api-db:
   vault_data:
   valkey_data:
+  caddy_data:
+  caddy_config:
