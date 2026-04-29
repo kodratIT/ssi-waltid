@@ -17,7 +17,7 @@
         reverse_proxy http://wallet-api:{$WALLET_BACKEND_PORT} {
             header_up Host {host}
             header_up X-Forwarded-Host {host}
-            header_up X-Forwarded-Proto {http.request.header.X-Forwarded-Proto}
+            header_up X-Forwarded-Proto https
         }
     }
 }
