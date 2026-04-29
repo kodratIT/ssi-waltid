@@ -230,15 +230,50 @@ services:
     cap_add:
       - NET_ADMIN
     ports:
-      - "80:80"     # HTTP (for ACME challenge)
-      - "443:443"   # HTTPS
+
+      - target: "$WALLET_BACKEND_PORT"
+        published: $WALLET_BACKEND_PORT # wallet-api
+        protocol: tcp
+        mode: host
+
+      - target: "$ISSUER_API_PORT"
+        published: $ISSUER_API_PORT # issuer-api
+        protocol: tcp
+        mode: host
+
+      - target: "$VERIFIER_API_PORT"
+        published: $VERIFIER_API_PORT # verifier-api
+        protocol: tcp
+        mode: host
+
+      - target: "$VERIFIER_API2_PORT"
+        published: $VERIFIER_API2_PORT # verifier-api2
+        protocol: tcp
+        mode: host
+
+      - target: "$DEMO_WALLET_FRONTEND_PORT"
+        published: $DEMO_WALLET_FRONTEND_PORT # waltid-demo-wallet
+        protocol: tcp
+        mode: host
+
+      - target: "$DEV_WALLET_FRONTEND_PORT"
+        published: $DEV_WALLET_FRONTEND_PORT # waltid-dev-wallet
+        protocol: tcp
+        mode: host
+
+      - target: "$WEB_PORTAL_PORT"
+        published: $WEB_PORTAL_PORT # web-portal
+        protocol: tcp
+        mode: host
+
+      - target: "$VC_REPO_PORT"
+        published: $VC_REPO_PORT # vc-repo
+        protocol: tcp
+        mode: host
+
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
 volumes:
   wallet-api-db:
   vault_data:
   valkey_data:
-  caddy_data:
-  caddy_config:
