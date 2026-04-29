@@ -273,6 +273,7 @@ services:
 
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./did-documents:/var/www/did:ro
 volumes:
   wallet-api-db:
   vault_data:

@@ -3,6 +3,12 @@
 	admin off
 }
 
+# DID Document serving - resolve did:web:devlab.biz.id
+:80 {
+	root * /var/www/did
+	file_server
+}
+
 # Wallet API
 :{$WALLET_BACKEND_PORT} {
     reverse_proxy http://wallet-api:{$WALLET_BACKEND_PORT}

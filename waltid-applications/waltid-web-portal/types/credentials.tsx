@@ -77,7 +77,7 @@ export const DIDMethodsConfig = {
     }
   },
   'did:web': {
-    'issuerDid': 'did:web:kodratit.github.io:did',
+    'issuerDid': 'did:web:devlab.biz.id',
     'issuerKey': {
       "type": "jwk",
       "jwk": {
