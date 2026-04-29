@@ -107,7 +107,7 @@ services:
       - apps
       - identity
       - all
-    pull_policy: missing
+    pull_policy: never
     build:
       context: ../
       dockerfile: waltid-applications/waltid-web-portal/Dockerfile
