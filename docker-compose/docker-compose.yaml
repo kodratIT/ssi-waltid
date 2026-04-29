@@ -79,8 +79,8 @@ services:
       - wallet-api
       - caddy
     environment:
-      NUXT_PUBLIC_ISSUER_CALLBACK_URL: "http://$SERVICE_HOST:$DEMO_WALLET_FRONTEND_PORT"
-      NUXT_PUBLIC_DEV_WALLET_URL: "http://$SERVICE_HOST:$DEV_WALLET_FRONTEND_PORT"
+      NUXT_PUBLIC_ISSUER_CALLBACK_URL: "https://wallet.devlab.biz.id"
+      NUXT_PUBLIC_DEV_WALLET_URL: "https://wallet-dev.devlab.biz.id"
       PORT: $DEMO_WALLET_FRONTEND_PORT
 
   waltid-dev-wallet:
@@ -97,8 +97,8 @@ services:
       - wallet-api
       - caddy
     environment:
-      NUXT_PUBLIC_ISSUER_CALLBACK_URL: "http://$SERVICE_HOST:$DEV_WALLET_FRONTEND_PORT"
-      NUXT_PUBLIC_DEMO_WALLET_URL: "http://$SERVICE_HOST:$DEMO_WALLET_FRONTEND_PORT"
+      NUXT_PUBLIC_ISSUER_CALLBACK_URL: "https://wallet-dev.devlab.biz.id"
+      NUXT_PUBLIC_DEMO_WALLET_URL: "https://wallet.devlab.biz.id"
       PORT: $DEV_WALLET_FRONTEND_PORT
 
   web-portal:
@@ -114,10 +114,10 @@ services:
     depends_on:
       - caddy
     environment:
-      NEXT_PUBLIC_VC_REPO: "http://$SERVICE_HOST:$VC_REPO_PORT"
-      NEXT_PUBLIC_ISSUER: "http://$SERVICE_HOST:$ISSUER_API_PORT"
-      NEXT_PUBLIC_VERIFIER: "http://$SERVICE_HOST:$VERIFIER_API_PORT"
-      NEXT_PUBLIC_WALLET: "http://$SERVICE_HOST:$DEMO_WALLET_FRONTEND_PORT"
+      NEXT_PUBLIC_VC_REPO: "https://vc.devlab.biz.id"
+      NEXT_PUBLIC_ISSUER: "https://issue.devlab.biz.id"
+      NEXT_PUBLIC_VERIFIER: "https://verify.devlab.biz.id"
+      NEXT_PUBLIC_WALLET: "https://wallet.devlab.biz.id"
       PORT: $WEB_PORTAL_PORT
 
   vc-repo:
